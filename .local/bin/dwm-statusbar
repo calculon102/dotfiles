@@ -1,0 +1,57 @@
+#!/bin/bash
+
+declare -A FSIO_BYTE_RATE=()
+declare -A FSIO_SECTORS_PREV=()
+
+declare -A NETIO_BYTE_RATE=()
+declare -A NETIO_BYTES_PREV=()
+
+format_bytes() {
+	numfmt --to=iec $1
+}
+
+update_fsio() {
+	local SECTOR_SIZE=$(</sys/block/$1/queue/hw_sector_size)
+	local STAT_LINE=$(</sys/block/$1/stat)
+	local STATS=($STAT_LINE)
+	local IO_SECTORS=$(( ${STATS[2]} + ${STATS[6]} ))
+	[[ -v "FSIO_SECTORS_PREV[$1]" ]] \
+	   	&& IO_SECTORS_PREV=${FSIO_SECTORS_PREV[$1]} \
+	   	|| IO_SECTORS_PREV=$IO_SECTORS 
+	local IO_SECTOR_RATE=$(( $IO_SECTORS - $IO_SECTORS_PREV ))
+	local BYTE_RATE=$(( $IO_SECTOR_RATE * $SECTOR_SIZE ))
+
+	FSIO_BYTE_RATE[$1]="$(format_bytes $BYTE_RATE)"
+	FSIO_SECTORS_PREV[$1]=$IO_SECTORS
+}
+
+update_netio() {
+	local CURRENT_BYTES=$(</sys/class/net/eth0/statistics/${1}_bytes)
+	local PREV_BYTES=0
+	[[ -v "NETIO_BYTES_PREV[$1]" ]] \
+		&& PREV_BYTES=${NETIO_BYTES_PREV[$1]} \
+		|| PREV_BYTES=$CURRENT_BYTES
+
+	local BYTE_RATE=$(( $CURRENT_BYTES - $PREV_BYTES ))
+	
+	NETIO_BYTE_RATE[$1]=$(format_bytes $BYTE_RATE)
+	NETIO_BYTES_PREV[$1]=$CURRENT_BYTES
+}
+
+get_datetime() {
+	date '+%A, %d. %B %Y, %R'
+}
+
+while :; do
+	update_fsio "sda"
+	update_fsio "sdb"
+
+	update_netio "rx"
+	update_netio "tx"
+	
+	# TODO Split string on multiple lines...
+	xsetroot -name "| 🖴 sd a:${FSIO_BYTE_RATE["sda"]} b:${FSIO_BYTE_RATE["sdb"]} | 🠟 ${NETIO_BYTE_RATE["rx"]} 🠝 ${NETIO_BYTE_RATE["tx"]} | $(get_datetime)"
+
+	# TODO Update time every 60 seconds
+	sleep 1
+done

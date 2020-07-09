@@ -1,0 +1,7 @@
+xset r rate 300 50 & # Increase keyboard speed
+dwm-statusbar &																		
+dwm-wallpaper &
+bing-wallpaper &
+numlockx on &
+
+setxkbmap -option caps:escape
