@@ -49,9 +49,13 @@ while :; do
 	update_netio "rx"
 	update_netio "tx"
 	
-	# TODO Split string on multiple lines...
-	xsetroot -name "| 🖴 sd a:${FSIO_BYTE_RATE["sda"]} b:${FSIO_BYTE_RATE["sdb"]} | 🠟 ${NETIO_BYTE_RATE["rx"]} 🠝 ${NETIO_BYTE_RATE["tx"]} | $(get_datetime)"
+	STATUS=$(printf "| 🖴  sda %4s sdb %4s | 🠟 %4s 🠝 %4s | $(get_datetime)" \
+		${FSIO_BYTE_RATE["sda"]}\
+	   	${FSIO_BYTE_RATE["sdb"]}\
+	   	${NETIO_BYTE_RATE["rx"]}\
+		${NETIO_BYTE_RATE["tx"]})
 
-	# TODO Update time every 60 seconds
+	xsetroot -name "$STATUS"
+
 	sleep 1
 done
