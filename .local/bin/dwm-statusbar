@@ -26,7 +26,7 @@ update_fsio() {
 }
 
 update_netio() {
-	local CURRENT_BYTES=$(</sys/class/net/eth0/statistics/${1}_bytes)
+	local CURRENT_BYTES=$(</sys/class/net/eno1/statistics/${1}_bytes)
 	local PREV_BYTES=0
 	[[ -v "NETIO_BYTES_PREV[$1]" ]] \
 		&& PREV_BYTES=${NETIO_BYTES_PREV[$1]} \

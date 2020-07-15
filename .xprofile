@@ -3,5 +3,6 @@ dwm-statusbar &
 dwm-wallpaper &
 bing-wallpaper &
 numlockx on &
+redshift &
 
 setxkbmap -option caps:escape
