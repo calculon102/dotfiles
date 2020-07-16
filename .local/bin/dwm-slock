@@ -1,0 +1,4 @@
+#!/bin/bash
+# st slock -m "$(cowsay "$(fortune)")"
+
+slock -m "$(fortune -c | cowthink -f $(find /usr/share/cows -type f | shuf -n 1))"
