@@ -4,5 +4,6 @@ dwm-wallpaper &
 bing-wallpaper &
 numlockx on &
 redshift &
+xcompmgr -c &
 
 setxkbmap -option caps:escape
