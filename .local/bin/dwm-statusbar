@@ -38,24 +38,38 @@ update_netio() {
 	NETIO_BYTES_PREV[$1]=$CURRENT_BYTES
 }
 
-get_datetime() {
-	date '+%A, %d. %B %Y, %R'
-}
 
+# Loop for hourly updates
+while true; do
+	dwm-checkupdates > ~/.cache/dwm-updates.txt
+	dwm-weather > ~/.cache/dwm-weather.txt
+
+	sleep 3600
+done &
+
+
+# Main loop
 while :; do
 	update_fsio "sda"
 	update_fsio "sdb"
 
+	HD_SPEED=$(printf "🖴 sda %-3s sdb %-3s" ${FSIO_BYTE_RATE["sda"]} ${FSIO_BYTE_RATE["sdb"]})
+
 	update_netio "rx"
 	update_netio "tx"
-	
-	STATUS=$(printf "| 🖴  sda %4s sdb %4s | 🠟 %4s 🠝 %4s | $(get_datetime)" \
-		${FSIO_BYTE_RATE["sda"]}\
-	   	${FSIO_BYTE_RATE["sdb"]}\
-	   	${NETIO_BYTE_RATE["rx"]}\
-		${NETIO_BYTE_RATE["tx"]})
 
-	xsetroot -name "$STATUS"
+	NET_SPEED=$(printf "🠟 %-3s 🠝 %-3s" ${NETIO_BYTE_RATE["rx"]} ${NETIO_BYTE_RATE["tx"]})
+
+	# TODO Find emoticon or use brain-emoticon with different font
+	MEMORY=$(free -m | awk 'NR==2{print "Mem " $3 "MB"}')
+
+	UPDATES=$(< ~/.cache/dwm-updates.txt)
+	
+	WEATHER=$(< ~/.cache/dwm-weather.txt)
+
+	DATETIME=$(date '+KW %V, %a. %d.%m.%Y, %R')
+
+	xsetroot -name "| $HD_SPEED | $NET_SPEED | $MEMORY | $UPDATES | $WEATHER | $DATETIME"
 
 	sleep 1
 done
