@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-fill $(ls -t ~/Pictures/BingWallpapers/*.jpg | head -n 2 | tr '\n' ' ')
+feh --bg-fill $(ls -1 ~/Pictures/BingWallpapers/*.jpg | head -n 1) $(ls -1 ~/Pictures/Wallpapers/*.jpg | shuf -n 1)
