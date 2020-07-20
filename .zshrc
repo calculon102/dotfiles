@@ -79,7 +79,7 @@ plugins=(
 	extract 
 	git 
 	z 
-	zsh-autosuggestions
+#	zsh-autosuggestions
 	zsh-syntax-highlighting 
 )
 
