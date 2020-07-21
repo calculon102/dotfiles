@@ -1,0 +1,6 @@
+[Unit]
+Description=Backup home directory
+
+[Service]
+ExecStart=/home/frank/.local/bin/backup-home
+

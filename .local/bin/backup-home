@@ -1,0 +1,6 @@
+#!/bin/sh
+duplicity \
+	--encrypt-key 97BB3D381E10B52977AC86325F8F1BEC3FB7F6B8 \
+	--exclude-filelist /home/frank/.config/backup/exclude \
+	/home/frank 
+	file:///mnt/backup/2020-07-20-zeus
