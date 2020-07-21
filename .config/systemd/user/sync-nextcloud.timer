@@ -1,5 +1,5 @@
 [Unit]
-Description=Sync nextcloud with local machine
+Description=sync nextcloud with local machine
 
 [Timer]
 OnActiveSec=15min

@@ -1,6 +1,6 @@
 [Unit]
-Description=Sync nextcloud with local machine
+Description=sync nextcloud with local machine
 
 [Service]
-ExecStart=/home/frank/.local/bin/sync-nextlcoud
+ExecStart=/home/frank/.local/bin/sync-nextcloud
 
