@@ -1,5 +1,5 @@
 #!/bin/sh
-search="$(checkupdates 2> /dev/null | wc -l)"
+search="$(checkupdates 2> /dev/null | wc -l)/$(pacman -Q | wc -l)"
 # TODO Ingtegrate updatable AUR packages, when those are actually used
 # updatesaur="$(yay -Qum 2> /dev/null | wc -l)"
 # updates=$(("$updatesarch" + "$updatesaur"))
