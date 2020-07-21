@@ -1,0 +1,2 @@
+#!/bin/sh
+nextcloudcmd -n -s ~/Cloud https://cloud.pixelgerecht.de

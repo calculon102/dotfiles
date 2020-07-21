@@ -1,0 +1,6 @@
+[Unit]
+Description=Sync nextcloud with local machine
+
+[Service]
+ExecStart=/home/frank/.local/bin/sync-nextlcoud
+

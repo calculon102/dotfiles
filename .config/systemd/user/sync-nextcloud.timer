@@ -1,0 +1,10 @@
+[Unit]
+Description=Sync nextcloud with local machine
+
+[Timer]
+OnActiveSec=15min
+OnUnitActiveSec=2w 
+
+[Install]
+WantedBy=timers.target
+
