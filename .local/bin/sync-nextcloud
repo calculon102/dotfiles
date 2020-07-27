@@ -1,2 +1,2 @@
 #!/bin/sh
-nextcloudcmd -h -n -s /home/frank/Cloud https://cloud.pixelgerecht.de
+nextcloudcmd -h -n /home/frank/Cloud https://cloud.pixelgerecht.de
