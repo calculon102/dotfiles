@@ -10,5 +10,6 @@ transition=1
 location-provider=manual
 
 [manual]
-lat=51.478573
-lon=6.825748
+;Set to own coordinates
+lat=-27.119979
+lon=-109.27590
