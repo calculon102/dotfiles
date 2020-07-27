@@ -1,9 +1,11 @@
+#!/bin/sh
+
 xset r rate 300 50 & # Increase keyboard speed
 dwm-statusbar &																		
 dwm-wallpaper &
 bing-wallpaper &
 numlockx on &
-redshift &
+redshift -c ~/.config/redshift/redshift.conf &
 xcompmgr -c &
 
 setxkbmap -option caps:escape
