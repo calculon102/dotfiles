@@ -1,3 +1,8 @@
 # Convenience for bare-repo of config-files
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# Shortcuts for often used programs
+alias sp='sudo pacman'
+alias sv='sudo vim'
+alias v='vim'
+alias pacman-remove-orphans="sudo pacman -Rns $(pacman -Qtdq)"
