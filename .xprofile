@@ -1,11 +1,27 @@
 #!/bin/sh
 
-xset r rate 300 50 & # Increase keyboard speed
-dwm-statusbar &																		
-dwm-wallpaper &
+# Increase keyboard speed
+xset r rate 300 50 & 
+
+# TODO Remove and/or make dwm-specific autostart
+# dwm-statusbar &																		
+
+set-xwallpaper &
+
+# Download daily wallpaper from bing
 bing-wallpaper &
+
+# Why would anyone want numlock off?
 numlockx on &
+
+# Easy eyes
 redshift -c ~/.config/redshift/redshift.conf &
+
+# Compositing
 xcompmgr -c &
 
-setxkbmap -option caps:escape
+# Citation: "Useless key in top-position". Make Caps-Lock to Escape
+setxkbmap -option caps:escape 
+
+# Enable X-keybindings
+pgrep -x sxhkd > /dev/null || sxhkd &
