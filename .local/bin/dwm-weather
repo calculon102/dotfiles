@@ -1,2 +1,1 @@
-#!/bin/sh
-curl -s wttr.in/Oberhausen?format=2
+query-weather

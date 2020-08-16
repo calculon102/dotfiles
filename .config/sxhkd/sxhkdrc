@@ -1,18 +1,16 @@
-#
-# wm independent hotkeys
-#
-
-# terminal emulator
-super + Return
-	st
-
-# program launcher
-super + @space
-	dmenu_run
-
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+# audio-control
+XF86AudioLowerVolume
+	pulsemixer --change-volume -2	
+
+XF86AudioRaiseVolume
+	pulsemixer --change-volume +2	
+
+super + alt + m
+	pulsemixer --toggle-mute
 
 #
 # bspwm hotkeys
@@ -120,26 +118,49 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+
 #
+# Shutdown
+#
+super + Shift_L + h
+	shutdown now
+
+
 # Application starter
-#
+
+## terminal emulator
+super + Return
+	st
+
+## program launcher
+super + @space
+	dmenu_run
+
+## browser
 super + F1
 	firefox
 
+## mail client
 super + F2
 	thunderbird
+
+super + F3
+	steam
+
+super + F4
+	spotify
 
 super + e
 	st ranger
 
-super + m
-	st pulsemixer
+super + F5
+	st -c pulsemixer -e pulsemixer
 
-super + c
-	st bc -q 
+super + F6
+	st -c bc -e bc -q 
 
-super + t
-	st htop
+ctrl + alt + Delete
+	st -c htop -e htop
 
-super + l
-	dwm-slock
+super + F12
+	lock-screen
