@@ -122,8 +122,11 @@ super + {Left,Down,Up,Right}
 #
 # Shutdown
 #
-super + Shift_L + h
+alt + control + h
 	shutdown now
+
+alt + control + r 
+	reboot
 
 
 # Application starter
