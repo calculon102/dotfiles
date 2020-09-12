@@ -3,7 +3,9 @@ JAVA_HOME="/usr/lib/jvm/default-java"
 export JAVA_HOME
 
 PATH="/home/frank/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"
+PATH="/var/lib/flatpak/exports/bin::$PATH"
+export PATH
 
 export ANDROID_HOME=/home/frank/Android/Sdk
 export ANDROID_SDK_ROOT=/home/frank/Android/Sdk
