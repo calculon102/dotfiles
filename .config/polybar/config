@@ -54,6 +54,8 @@ cursor-click = pointer
 
 cursor-scroll = ns-resize
 
+wm-restack = bspwm
+
 [bar/zeus-left]
 inherit = bar/zeus
 modules-right = spotify 
