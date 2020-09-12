@@ -23,5 +23,8 @@ xcompmgr -c &
 # Citation: "Useless key in top-position". Make Caps-Lock to Escape
 setxkbmap -option caps:escape 
 
+# Hide cursor after 2 seconds idle-time
+unclutter --timeout 2 &
+
 # Enable X-keybindings
 pgrep -x sxhkd > /dev/null || sxhkd &
