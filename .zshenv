@@ -20,3 +20,6 @@ export DOCKER_ENV_GROUP_ID="$(id -g)"
 
 # For Intellij-derivates and other Java-Clients
 export _JAVA_AWT_WM_NONREPARENTING=1 
+
+# For racer: rust-code-completions
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
