@@ -18,7 +18,7 @@ numlockx on &
 redshift -c ~/.config/redshift/redshift.conf &
 
 # Compositing
-xcompmgr -c &
+picom -bc --fade-delta=6
 
 # Citation: "Useless key in top-position". Make Caps-Lock to Escape
 setxkbmap -option caps:escape 
