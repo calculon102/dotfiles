@@ -60,4 +60,4 @@ let g:tagbar_autofocus = 1
 " Racer: Code-completion for rust
 
 set hidden
-let g:racer_cmd = "/home/user/.cargo/bin/racer"
+let g:racer_cmd = "$HOME/.cargo/bin/racer"

@@ -4,7 +4,7 @@ export JAVA_HOME
 
 PATH="/home/frank/.local/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
-PATH="/var/lib/flatpak/exports/bin::$PATH"
+PATH="/var/lib/flatpak/exports/bin:$PATH"
 export PATH
 
 export ANDROID_HOME=/home/frank/Android/Sdk
