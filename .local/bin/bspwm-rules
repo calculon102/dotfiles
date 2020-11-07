@@ -130,6 +130,7 @@ case $instance.$class in
 	(*.htop) state=floating;;
 	(*.bc) state=floating;;
 	(*.XCalc) xcalc;;
+	(*.xcalc) xcalc;;
 	(*org.remmina.Remmina) remmina;;
 	([lL]ibre[oO]ffice*) libreoffice;;
 	(jetbrains-idea.jetbrains-idea) jetbrains_idea;;

@@ -154,13 +154,13 @@ super + F4
 	spotify
 
 super + e
-	st ranger
+	thunar
 
 super + F5
 	st -c pulsemixer -e pulsemixer
 
 super + F6
-	st -c bc -e bc -q 
+	xcalc
 
 ctrl + alt + Delete
 	st -c htop -e htop
