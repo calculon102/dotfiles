@@ -57,7 +57,6 @@ nmap <F8> :TagbarToggle<CR>
 let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 
-" Racer: Code-completion for rust
+" YouCompleteMe
+let g:ycm_rust_src_path="$RUST_SRC_PATH"
 
-set hidden
-let g:racer_cmd = "$HOME/.cargo/bin/racer"
