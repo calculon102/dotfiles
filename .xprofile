@@ -28,3 +28,6 @@ unclutter --timeout 2 &
 
 # Enable X-keybindings
 pgrep -x sxhkd > /dev/null || sxhkd &
+
+# Take Screenshots
+flameshot &

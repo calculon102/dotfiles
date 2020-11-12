@@ -167,3 +167,11 @@ ctrl + alt + Delete
 
 super + F12
 	lock-screen
+
+# Take screenshot
+alt + Print
+	flameshot gui -p ~/Pictures/screenshots
+
+Print
+	flameshot full -c -p ~/Pictures/screenshots
+
