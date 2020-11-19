@@ -4,6 +4,7 @@ export JAVA_HOME
 
 PATH="/home/frank/.local/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/.config/composer/vendor/bin:$PATH"
 PATH="/var/lib/flatpak/exports/bin:$PATH"
 export PATH
 
