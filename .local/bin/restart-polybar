@@ -1,0 +1,10 @@
+#!/bin/sh
+
+killall -q polybar
+polybar -q mon1-left &
+polybar -q mon1-center &
+polybar -q mon1-right &
+polybar -q mon2-left &
+polybar -q mon2-center &
+polybar -q mon2-right &
+

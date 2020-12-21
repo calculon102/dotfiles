@@ -20,7 +20,5 @@ bspc config external_rules_command ".local/bin/bspwm-rules"
 # Autostart
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-killall -q polybar
-polybar -q zeus-left &
-polybar -q zeus-right &
+restart-polybar
 
