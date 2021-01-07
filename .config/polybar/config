@@ -1,24 +1,28 @@
 [colors]
-background = #60000000
-background-alt = #444
-foreground = #dfdfdf
-foreground-alt = #aaa
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+fg = #f8f8f2
+text-fg = ${self.fg}
+bg = #282a36
+base-bg    = ${self.bg:#dd282a36}
+text-bg = ${self.bg}
+selection = #44475a
+comment = #6272a4
+glyph-bg   = ${self.comment}
+module-bg  = ${self.comment}
+cyan  = #8be9fd
+green  = #50fa7b
+orange = #ffb86c
+pink  = #ff79c6
+purple  = #bd93f9
+red  = #ff5555
+white  = #f8f8f2
+yellow  = #f1fa8c
 
-; Rainbow-colors
-rb1 = #ff0000
-rb2 = #ffa500
-rb3 = #ffff00
-rb4 = #008000
-rb5 = #0000ff
-rb6 = #4b0082
-rb7 = #ee82ee
+prefix-fg = ${self.comment}
+
 
 [bar/zeus]
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = ${colors.bg}
+foreground = ${colors.fg}
 
 border-size = 0
 border-color = #ff0000
@@ -34,11 +38,11 @@ fixed-center = false
 
 font-0 = "Fantasque Sans Mono:style=Regular:size=13;1"
 font-1 = "Noto Sans:style=Bold:size=18;3"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=11;1" 
-font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=11;1" 
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=11;1"
+font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=11;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=11;1"
 
-height = 25
+height = 30
 
 line-size = 0
 line-color = #f00
@@ -48,75 +52,46 @@ locale = de_DE.UTF-8
 module-margin-left = 0
 module-margin-right = 1
 
-radius = 10.0
+radius = 0.0
 
-offset-x = 0.5%
-offset-y = 6
+offset-x = 0
+offset-y = 0
 
 tray-position = none
 
 wm-restack = bspwm
 
-[bar/mon1-left]
+[bar/mon1]
 inherit = bar/zeus
 modules-left = bspwm xwindow
+modules-right = spotify pulseaudio
 monitor = DisplayPort-0
-width = 45%
+width = 100%
 
-[bar/mon1-center]
+[bar/mon2]
 inherit = bar/zeus
-modules-center = xwindow 
-monitor = DisplayPort-0
-width = 36%
-offset-x = 32.0%
-
-[bar/mon1-right]
-inherit = bar/zeus
-modules-left = spotify
-modules-right = pulseaudio 
-monitor = DisplayPort-0
-width = 25%
-offset-x = 74.5%
-
-[bar/mon2-left]
-inherit = bar/zeus
-modules-left = bspwm xwindow 
-monitor = HDMI-A-0 
-width = 45.0%
-
-[bar/mon2-center]
-inherit = bar/zeus
-modules-center = xwindow 
-monitor = HDMI-A-0 
-width = 36%
-offset-x = 32.0%
-
-[bar/mon2-right]
-inherit = bar/zeus
-modules-right = memory cpu eth-down eth-up updates date 
-monitor = HDMI-A-0 
-width = 30%
-offset-x = 69.5%
+modules-left = bspwm xwindow
+modules-right = memory cpu eth-down eth-up updates date
+monitor = HDMI-A-0
+width = 100.0%
 
 [module/bspwm]
 type = internal/bspwm
 
 label-focused = %icon%
-;label-focused-background = ${colors.background-alt}
-label-focused-background = ${colors.foreground}
-label-focused-foreground = #000
-;label-focused-underline= ${colors.primary}
+label-focused-background = ${colors.selection}
+label-focused-foreground = ${colors.fg}
 label-focused-padding = 2
 
 label-occupied = %icon%
 label-occupied-padding = 2
 
 label-urgent = %icon%!
-label-urgent-background = ${colors.alert}
+label-urgent-background = ${colors.prefix-fg}
 label-urgent-padding = 2
 
 label-empty = %icon%
-label-empty-foreground = ${colors.background-alt}
+label-empty-foreground = ${colors.comment}
 label-empty-padding = 2
 
 ws-icon-0 = 1;www
@@ -131,15 +106,15 @@ ws-icon-7 = 8;8
 [module/xwindow]
 type = internal/xwindow
 
-format-foreground = #000 
-format-background = ${colors.foreground}
+format-foreground = ${colors.fg}
+format-background = ${colors.bg}
 format-padding = 4
 
 label = %title%
 label-maxlen = 90
 
 label-empty = "-"
-label-empty-foreground = ${colors.background}
+label-empty-foreground = ${colors.bg}
 
 [module/spotify]
 type = custom/script
@@ -158,7 +133,7 @@ format-mounted-underline = ${colors.rb1}
 
 label-mounted = %{F#555}%mountpoint%%{F-} %percentage_used%%
 label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+label-unmounted-foreground = ${colors.fg}
 
 mount-0 = /
 mount-1 = /home
@@ -167,14 +142,14 @@ mount-1 = /home
 type = internal/cpu
 interval = 2
 format-prefix = " "
-format-prefix-foreground = "${colors.foreground-alt}"
+format-prefix-foreground = ${colors.prefix-fg}
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
 format-prefix = " "
-format-prefix-foreground = "${colors.foreground-alt}"
+format-prefix-foreground = ${colors.prefix-fg}
 label = %percentage_used%%
 
 [module/eth]
@@ -182,14 +157,13 @@ type = internal/network
 interface = enp4s0
 interval = 3.0
 
-# format-connected-underline = ${colors.rb3}
-format-connected-prefix-foreground = "${colors.foreground-alt}"
-
 format-disconnected =
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+;label-disconnected-foreground = ${colors.fg}
+format-prefix-foreground = ${colors.prefix-fg}
+format-connected-prefix-foreground = ${colors.prefix-fg}
 
 [module/eth-down]
 inherit = module/eth
@@ -197,6 +171,7 @@ inherit = module/eth
 label-connected = " %downspeed:3% "
 format-connected = <label-connected>
 format-connected-prefix = "  "
+format-prefix-foreground = ${colors.prefix-fg}
 
 [module/eth-up]
 inherit = module/eth
@@ -204,6 +179,7 @@ inherit = module/eth
 label-connected = " %upspeed:3% "
 format-connected = <label-connected>
 format-connected-prefix = "  "
+format-prefix-foreground = ${colors.prefix-fg}
 
 [module/powermenu]
 type = custom/menu
@@ -213,11 +189,11 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
-label-open-foreground = ${colors.secondary}
+label-open-foreground = ${colors.comment}
 label-close =  cancel
-label-close-foreground = ${colors.secondary}
+label-close-foreground = ${colors.comment}
 label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+label-separator-foreground = ${colors.fg}
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
@@ -238,48 +214,49 @@ menu-2-1-exec = menu-open-0
 type = custom/script
 exec = query-updates
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.prefix-fg}
 interval = 3600
 
 [module/weather]
 type = custom/script
 exec = query-weather
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.prefix-fg}
 format-underline = ${colors.rb5}
 interval = 3600
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <ramp-volume> <label-volume> 
+format-volume = <ramp-volume> <label-volume>
 
 label-volume = "%percentage%% "
-label-volume-foreground = ${root.foreground}
+label-volume-foreground = ${colors.fg}
 
 label-muted =  muted
 label-muted-foreground = #666
 
-ramp-volume-0 =  
+ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
+ramp-volume-foreground = ${colors.prefix-fg}
 
 [module/date]
 type = internal/date
 interval = 5
 
-date = "KW %V | %a. %d.%m.%Y"
+date = "KW %V · %a. %d.%m.%Y"
 date-alt = " %Y-%m-%d"
 
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground}
+format-prefix = 
+format-prefix-foreground = ${colors.prefix-fg}
 
-label = " %date% |  %time% "
-label-foreground = #000 
-label-background = ${colors.foreground}
+label = " %date% · %time% "
+label-foreground = ${colors.fg}
+label-background = ${colors.bg}
 
 [settings]
 compositing-background = screen

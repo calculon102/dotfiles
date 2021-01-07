@@ -27,8 +27,9 @@ set statusline+=\ %l:%c
 set statusline+=\ 
 
 " Theming
-set background=dark
-autocmd vimenter * colorscheme gruvbox
+" set background=dark
+" autocmd vimenter * colorscheme gruvbox
+colorscheme dracula
 
 " Spell-check
 map <F6> :setlocal spell! spelllang=en_us<CR>

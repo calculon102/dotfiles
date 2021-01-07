@@ -2,8 +2,6 @@
 
 killall -q polybar
 
-polybar -q mon1-left 2>&1 | tee -a /tmp/polybar-mon1-left.log &
-polybar -q mon1-right 2>&1 | tee -a /tmp/polybar-mon1-right.log  &
-polybar -q mon2-left 2>&1 | tee -a /tmp/polybar-mon2-left.log  &
-polybar -q mon2-right 2>&1 | tee -a /tmp/polybar-mon2-right.log  &
+polybar -q mon1 2>&1 | tee -a /tmp/polybar-mon1.log &
+polybar -q mon2 2>&1 | tee -a /tmp/polybar-mon2.log  &
 
