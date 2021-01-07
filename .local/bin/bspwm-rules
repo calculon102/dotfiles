@@ -121,17 +121,18 @@ jetbrains_idea() {
 }
 
 case $instance.$class in
-	(*.[Ff]irefox) firefox;;
-	(*.[Tt]hunderbird) thunderbird;;
-	(*.[Ss]team) steam;;
-	(*.Spotify) spotify;;
-	(*.xfreerdp) state=floating;;
-	(*.pulsemixer) state=floating;;
-	(*.htop) state=floating;;
 	(*.bc) state=floating;;
+	(*.[Ff]irefox) firefox;;
+	(*.htop) state=floating;;
+	(*.pulsemixer) state=floating;;
+	(*.Spotify) spotify;;
+	(*.[Ss]team) steam;;
+	(*.[Tt]hunderbird) thunderbird;;
+	(*.xfreerdp) state=floating;;
 	(*.XCalc) xcalc;;
 	(*.xcalc) xcalc;;
 	(*org.remmina.Remmina) remmina;;
+	(frgr10-vm) desktop=^8;;
 	([lL]ibre[oO]ffice*) libreoffice;;
 	(jetbrains-idea.jetbrains-idea) jetbrains_idea;;
 	(.)
