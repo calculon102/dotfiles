@@ -2,7 +2,7 @@
 background = #60000000
 background-alt = #444
 foreground = #dfdfdf
-foreground-alt = #555
+foreground-alt = #aaa
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
@@ -59,9 +59,9 @@ wm-restack = bspwm
 
 [bar/mon1-left]
 inherit = bar/zeus
-modules-left = bspwm 
+modules-left = bspwm xwindow
 monitor = DisplayPort-0
-width = 11.1%
+width = 45%
 
 [bar/mon1-center]
 inherit = bar/zeus
@@ -75,14 +75,14 @@ inherit = bar/zeus
 modules-left = spotify
 modules-right = pulseaudio 
 monitor = DisplayPort-0
-width = 20%
-offset-x = 79.5%
+width = 25%
+offset-x = 74.5%
 
 [bar/mon2-left]
 inherit = bar/zeus
-modules-left = bspwm 
+modules-left = bspwm xwindow 
 monitor = HDMI-A-0 
-width = 7.0%
+width = 45.0%
 
 [bar/mon2-center]
 inherit = bar/zeus
@@ -104,7 +104,7 @@ type = internal/bspwm
 label-focused = %icon%
 ;label-focused-background = ${colors.background-alt}
 label-focused-background = ${colors.foreground}
-label-focused-foreground = ${colors.background}
+label-focused-foreground = #000
 ;label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
@@ -116,7 +116,7 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 label-empty = %icon%
-label-empty-foreground = ${colors.foreground-alt}
+label-empty-foreground = ${colors.background-alt}
 label-empty-padding = 2
 
 ws-icon-0 = 1;www
@@ -131,15 +131,20 @@ ws-icon-7 = 8;8
 [module/xwindow]
 type = internal/xwindow
 
-format-foreground = ${colors.foreground}
+format-foreground = #000 
+format-background = ${colors.foreground}
+format-padding = 4
 
 label = %title%
-label-maxlen = 100
+label-maxlen = 90
+
+label-empty = "-"
+label-empty-foreground = ${colors.background}
 
 [module/spotify]
 type = custom/script
 interval = 10
-format-prefix = " "
+format-prefix = "  "
 format-prefix-foreground = #1db954
 format = <label>
 exec = spotify-status -f '{artist}: {song}'
@@ -162,16 +167,14 @@ mount-1 = /home
 type = internal/cpu
 interval = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.rb2}
-;format-underline = ${colors.rb2}
+format-prefix-foreground = "${colors.foreground-alt}"
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.rb2}
-# format-underline = ${colors.rb2}
+format-prefix-foreground = "${colors.foreground-alt}"
 label = %percentage_used%%
 
 [module/eth]
@@ -180,7 +183,7 @@ interface = enp4s0
 interval = 3.0
 
 # format-connected-underline = ${colors.rb3}
-format-connected-prefix-foreground = ${colors.rb3}
+format-connected-prefix-foreground = "${colors.foreground-alt}"
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -235,8 +238,7 @@ menu-2-1-exec = menu-open-0
 type = custom/script
 exec = query-updates
 format-prefix = " "
-format-prefix-foreground = ${colors.rb4}
-;format-underline = ${colors.rb4}
+format-prefix-foreground = ${colors.foreground-alt}
 interval = 3600
 
 [module/weather]
@@ -251,9 +253,8 @@ interval = 3600
 type = internal/pulseaudio
 
 format-volume = <ramp-volume> <label-volume> 
-;format-volume-underline = ${colors.rb6}
 
-label-volume = %percentage%%
+label-volume = "%percentage%% "
 label-volume-foreground = ${root.foreground}
 
 label-muted =  muted
@@ -275,10 +276,9 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground}
-;format-underline = ${colors.rb7}
 
 label = " %date% |  %time% "
-label-foreground = ${colors.background}
+label-foreground = #000 
 label-background = ${colors.foreground}
 
 [settings]

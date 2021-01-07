@@ -5,36 +5,49 @@
 # Read `man 5 sway` for a complete reference.
 
 # TODO
-# - Keybindings for applications
 # - Keybindings for sound
-# - Bind applications to workspaces
-# - Defiine floating applications
-# - Customize titlebar
-# - Alternative modes??? -> Stacked?
+# - Assign spotify to workspace
+
+# Custom: Variables
+
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+
+set $uifont "Fantasque Sans Mono"
+set $foreground #f0f0f0
+set $background #000000a0
+set $highlight #3daee9
+set $prompt #18b218
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Your preferred terminal emulator
+set $term alacritty
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu bemenu-run --fn "$uifont 14" -p "▶" --tb="$background" --tf "$foreground" --hf "$background" --hb "$foreground" | xargs swaymsg exec
+
+# Monitors
+set $output-primary DP-1
+set $output-secondary HDMI-A-1
+
 
 # Custom: Autostart
 exec gammastep &
 exec set-sway-wallpaper
 
 # Custom: Styling
-font Fantasque Sans Mono
+default_border none
+default_floating_border normal
+font $uifont
 gaps inner 6
 
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
-set $mod Mod4
-# Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
-# Your preferred terminal emulator
-set $term alacritty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -48,12 +61,9 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 # Custom: Switch my displays
-
-set $output-primary DP-1
-set $output-secondary HDMI-A-1
-
 output $output-secondary pos 2560 0
 output $output-primary pos 0 0
+
 
 ### Idle configuration
 #
@@ -67,6 +77,7 @@ output $output-primary pos 0 0
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
+
 
 ### Input configuration
 #
@@ -199,7 +210,7 @@ input "type:keyboard" {
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym $mod+t layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -248,6 +259,27 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+bindsym $mod+e exec thunar
+
+# Custom: Assign apps to workspaces
+
+bindsym $mod+f1 exec firefox
+bindsym $mod+f2 exec thunderbird
+bindsym $mod+f3 exec steam
+bindsym $mod+f4 exec spotify
+bindsym $mod+f5 exec alacritty -e pulsemixer
+bindsym $mod+f6 exec keepassxc
+bindsym $mod+f7 exec alacritty --class htop -e htop
+
+assign [class="^firefox"] → $ws-1
+assign [class="^Thunderbird"] → $ws-2
+assign [class="^Steam"] → $ws-3
+assign [class="^Spotify"] → $ws-4 # TODO Does not work, class set too late
+
+for_window [app_id="pavucontrol"] floating enable
+for_window [title="^pulsemixer"] floating enable
+for_window [app_id="^htop"] floating enable
 
 #
 # Status Bar:

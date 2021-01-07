@@ -1,6 +1,4 @@
-# Autostart dwm on login
+# Autostart window-manager on login
 if [[ "$(tty)" = "/dev/tty1" ]]; then
-	pgrep bspwm || startx
+	pgrep sway || sway
 fi
-
-export PATH="$HOME/.cargo/bin:$PATH"
