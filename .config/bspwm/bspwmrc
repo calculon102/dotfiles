@@ -17,6 +17,8 @@ bspc config pointer_action2 resize_corner
 
 bspc config external_rules_command ".local/bin/bspwm-rules"
 
+bspc config automatic_scheme longest_side
+
 # Autostart
 pgrep -x sxhkd > /dev/null || sxhkd &
 
