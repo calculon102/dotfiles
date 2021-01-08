@@ -36,11 +36,11 @@ map <F6> :setlocal spell! spelllang=en_us<CR>
 map <F7> :setlocal spell! spelllang=de_de<CR>
 
 " Cut/Copy/Paste with system-clipboard
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
+imap <C-c> "+yi
+imap <C-x> "+c
+imap <C-v> c<ESC>"+p
 imap <C-v> <C-r><C-o>+
-
+" Synt
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
