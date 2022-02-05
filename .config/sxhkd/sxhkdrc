@@ -26,8 +26,7 @@ super + {_,shift + }w
 
 # alternate between the tiled and monocle layout
 super + m
-#	bspc desktop -l next
-	bsp-layout set monocle
+	bspc desktop -l next
 
 # send the newest marked node to the newest preselected node
 super + y
@@ -44,9 +43,6 @@ super + g
 # set the window state
 super + {shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-
-super + t
-	bsp-layout set tall
 
 # set the node flags
 super + ctrl + {m,x,y,z}
@@ -126,10 +122,10 @@ super + {Left,Down,Up,Right}
 #
 # Shutdown
 #
-alt + control + h
+super + alt + shift + F12 
 	shutdown now
 
-alt + control + r 
+super + alt + shift + F11 
 	reboot
 
 
@@ -164,7 +160,13 @@ super + F5
 	st -c pulsemixer -e pulsemixer
 
 super + F6
-	xcalc
+	gnome-calculator
+
+super + F7
+	rdp-rola-vm-1m
+
+super + F8
+	remmina -c ~/.local/share/remmina/group_rdp_frgr10-vm_frgr10-vm.remmina
 
 ctrl + alt + Delete
 	st -c htop -e htop
