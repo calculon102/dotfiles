@@ -97,9 +97,6 @@ libreoffice() {
 	layer=normal;
 }
 
-remmina() {
-	desktop=^7;
-}
 
 jetbrains_idea() {
 	local name;
@@ -116,14 +113,11 @@ jetbrains_idea() {
 			split_ratio=0.75;
 			split_dir=east;;
 	esac;
-
-	desktop=^6;
 }
 
 case $instance.$class in
 	(*.bc) state=floating;;
 	(*.[Ff]irefox) firefox;;
-	(*.htop) state=floating;;
 	(*.pulsemixer) state=floating;;
 	(*.Spotify) spotify;;
 	(*.[Ss]team) steam;;
@@ -131,7 +125,6 @@ case $instance.$class in
 	(*.xfreerdp) state=floating;;
 	(*.XCalc) xcalc;;
 	(*.xcalc) xcalc;;
-	(*org.remmina.Remmina) remmina;;
 	(frgr10-vm) desktop=^8;;
 	([lL]ibre[oO]ffice*) libreoffice;;
 	(jetbrains-idea.jetbrains-idea) jetbrains_idea;;
