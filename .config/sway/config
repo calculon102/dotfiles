@@ -34,8 +34,8 @@ set $term alacritty
 set $menu bemenu-run --fn "$uifont 14" -p "▶" --tb="$background" --tf "$foreground" --hf "$background" --hb "$foreground" | xargs swaymsg exec
 
 # Monitors
-set $output-primary DP-1
-set $output-secondary HDMI-A-1
+set $output-primary HDMI-A-1
+set $output-secondary DP-1
 
 
 # Custom: Autostart
@@ -285,6 +285,8 @@ assign [class="^Spotify"] → $ws-4 # TODO Does not work, class set too late
 for_window [app_id="pavucontrol"] floating enable
 for_window [title="^pulsemixer"] floating enable
 for_window [app_id="^htop"] floating enable
+
+for_window [shell=".*"] title_format "%title :: %shell"
 
 #
 # Status Bar:

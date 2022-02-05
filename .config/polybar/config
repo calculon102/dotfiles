@@ -65,7 +65,7 @@ wm-restack = bspwm
 inherit = bar/zeus
 modules-left = bspwm xwindow
 modules-right = spotify pulseaudio
-monitor = DisplayPort-0
+monitor = DisplayPort-1
 width = 100%
 
 [bar/mon2]
