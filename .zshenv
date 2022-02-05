@@ -1,5 +1,5 @@
 # Custom env-variables
-JAVA_HOME="/usr/lib/jvm/default-java"
+JAVA_HOME="/usr/lib/jvm/default"
 export JAVA_HOME
 
 PATH="/home/frank/.local/bin:$PATH"
