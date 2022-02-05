@@ -1,8 +1,9 @@
 # Autostart window-manager on login
 if [[ "$(tty)" = "/dev/tty1" ]]; then
-	pgrep sway || sway
+	pgrep bspwm || startx
 fi
 
 if [[ "$(tty)" = "/dev/tty2" ]]; then
-	pgrep bspwm || startx
+	pgrep sway || sway
 fi
+
