@@ -40,7 +40,7 @@ imap <C-c> "+yi
 imap <C-x> "+c
 imap <C-v> c<ESC>"+p
 imap <C-v> <C-r><C-o>+
-" Synt
+
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -58,6 +58,5 @@ nmap <F8> :TagbarToggle<CR>
 let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 
-" YouCompleteMe
-let g:ycm_rust_src_path="$RUST_SRC_PATH"
+autocmd BufNew,BufRead *.asm set ft=nasm
 
