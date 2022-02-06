@@ -1,4 +1,4 @@
 #!/bin/bash
-WALLPAPER="$(ls -1 ~/Pictures/Wallpapers/2021-light/* | shuf -n 1)"
-swaymsg output DP-1 background "$WALLPAPER" FILL
-swaymsg output HDMI-A-1 background "$WALLPAPER" FILL
+WALLPAPER="$(ls -1 ~/Pictures/Wallpapers/anime/* | shuf -n 1)"
+swaymsg output DP-2 background "$WALLPAPER" fill
+swaymsg output HDMI-A-1 background "$WALLPAPER" fill
