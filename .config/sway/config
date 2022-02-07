@@ -42,10 +42,12 @@ exec gammastep &
 exec set-sway-wallpaper
 
 # Custom: Styling
-default_border normal
+default_border pixel
 default_floating_border normal
 font $uifont
 gaps inner 6
+
+client.focused #ffa500 #ffa500 #ffa500
 
 
 ### Output configuration
@@ -274,7 +276,7 @@ bindsym $mod+alt+m exec pulsemixer --toggle-mute
 
 # Custom: Assign apps to workspaces
 
-bindsym $mod+f1 exec firefox
+bindsym $mod+f1 exec firefox-wayland
 bindsym $mod+f2 exec thunderbird
 bindsym $mod+f3 exec steam
 bindsym $mod+f4 exec spotify
