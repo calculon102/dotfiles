@@ -5,7 +5,6 @@
 # Read `man 5 sway` for a complete reference.
 
 # TODO
-# - Keybindings for sound
 # - Assign spotify to workspace
 
 # Custom: Variables
@@ -43,7 +42,7 @@ exec gammastep &
 exec set-sway-wallpaper
 
 # Custom: Styling
-default_border none
+default_border normal
 default_floating_border normal
 font $uifont
 gaps inner 6
@@ -266,6 +265,12 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bindsym $mod+e exec thunar
+
+# Volume control
+bindsym XF86AudioLowerVolume exec pulsemixer --change-volume -2 
+bindsym XF86AudioRaiseVolume exec pulsemixer --change-volume +2
+bindsym $mod+alt+m exec pulsemixer --toggle-mute
+
 
 # Custom: Assign apps to workspaces
 
