@@ -41,6 +41,9 @@ set $output-secondary DP-2
 exec gammastep &
 exec set-sway-wallpaper
 
+# Enable desktop-sharing
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
 # Custom: Styling
 default_border pixel
 default_floating_border normal
@@ -111,136 +114,136 @@ input "type:keyboard" {
 #
 # Basics:
 #
-    # Start a terminal
-    bindsym $mod+Return exec $term
+# Start a terminal
+bindsym $mod+Return exec $term
 
-    # Kill focused window
-    bindsym $mod+Shift+q kill
+# Kill focused window
+bindsym $mod+Shift+q kill
 
-    # Start your launcher
-    bindsym $mod+d exec $menu
+# Start your launcher
+bindsym $mod+d exec $menu
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
 
-    # Reload the configuration file
-    bindsym $mod+Shift+c reload
+# Reload the configuration file
+bindsym $mod+Shift+c reload
 
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-    
-	# Reload the configuration file
-    bindsym $mod+Control+l exec swaylock -s fill -i ~/Pictures/Wallpapers/scifi/560270.jpg
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+# Reload the configuration file
+bindsym $mod+Control+l exec swaylock -s fill -i ~/Pictures/Wallpapers/scifi/560270.jpg
 
 #
 # Moving around:
 #
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+# Or use $mod+[up|down|left|right]
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
-    # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# Ditto, with arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
 #
 # Custom: Workspaces
 #
-	set $ws-1 www
-	set $ws-2 mail
-	set $ws-3 steam
-	set $ws-4 music
-	set $ws-5 5
-	set $ws-6 6
-	set $ws-7 7
-	set $ws-8 8
+set $ws-1 www
+set $ws-2 mail
+set $ws-3 steam
+set $ws-4 music
+set $ws-5 5
+set $ws-6 6
+set $ws-7 7
+set $ws-8 8
 
-    # Switch to workspace
-    bindsym $mod+1 workspace $ws-1
-    bindsym $mod+2 workspace $ws-2
-    bindsym $mod+3 workspace $ws-3
-    bindsym $mod+4 workspace $ws-4
-    bindsym $mod+5 workspace $ws-5
-    bindsym $mod+6 workspace $ws-6
-    bindsym $mod+7 workspace $ws-7
-    bindsym $mod+8 workspace $ws-8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace $ws-1
-    bindsym $mod+Shift+2 move container to workspace $ws-2
-    bindsym $mod+Shift+3 move container to workspace $ws-3
-    bindsym $mod+Shift+4 move container to workspace $ws-4
-    bindsym $mod+Shift+5 move container to workspace $ws-5
-    bindsym $mod+Shift+6 move container to workspace $ws-6
-    bindsym $mod+Shift+7 move container to workspace $ws-7
-    bindsym $mod+Shift+8 move container to workspace $ws-8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+# Switch to workspace
+bindsym $mod+1 workspace $ws-1
+bindsym $mod+2 workspace $ws-2
+bindsym $mod+3 workspace $ws-3
+bindsym $mod+4 workspace $ws-4
+bindsym $mod+5 workspace $ws-5
+bindsym $mod+6 workspace $ws-6
+bindsym $mod+7 workspace $ws-7
+bindsym $mod+8 workspace $ws-8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws-1
+bindsym $mod+Shift+2 move container to workspace $ws-2
+bindsym $mod+Shift+3 move container to workspace $ws-3
+bindsym $mod+Shift+4 move container to workspace $ws-4
+bindsym $mod+Shift+5 move container to workspace $ws-5
+bindsym $mod+Shift+6 move container to workspace $ws-6
+bindsym $mod+Shift+7 move container to workspace $ws-7
+bindsym $mod+Shift+8 move container to workspace $ws-8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
-	workspace $ws-1 output $output-secondary
-	workspace $ws-2 output $output-secondary
-	workspace $ws-3 output $output-secondary
-	workspace $ws-4 output $output-secondary
-	workspace $ws-5 output $output-primary
-	workspace $ws-6 output $output-primary
-	workspace $ws-7 output $output-primary
-	workspace $ws-8 output $output-primary
+workspace $ws-1 output $output-secondary
+workspace $ws-2 output $output-secondary
+workspace $ws-3 output $output-secondary
+workspace $ws-4 output $output-secondary
+workspace $ws-5 output $output-primary
+workspace $ws-6 output $output-primary
+workspace $ws-7 output $output-primary
+workspace $ws-8 output $output-primary
 #
 # Layout stuff:
 #
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
+bindsym $mod+b splith
+bindsym $mod+v splitv
 
-    # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+t layout toggle split
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+t layout toggle split
 
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
 
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
 
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
 
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
+# Move focus to the parent container
+bindsym $mod+a focus parent
 #
 # Scratchpad:
 #
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
 
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
 
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
 #
@@ -282,16 +285,24 @@ bindsym $mod+f3 exec steam
 bindsym $mod+f4 exec spotify
 bindsym $mod+f5 exec alacritty -e pulsemixer
 bindsym $mod+f6 exec keepassxc
-bindsym $mod+f7 exec alacritty --class htop -e htop
+bindsym $mod+f7 exec remmina -c ~/.local/share/remmina/group_rdp_frgr10-vm_frgr10-vm.remmina
+bindsym $mod+f8 exec alacritty --class show-sway-keybindings -e ~/.local/bin/show-sway-keybindings
+bindsym Control+Alt+Delete exec alacritty --class htop -e htop
 
 assign [class="^firefox"] → $ws-1
 assign [class="^Thunderbird"] → $ws-2
 assign [class="^Steam"] → $ws-3
-assign [class="^Spotify"] → $ws-4 # TODO Does not work, class set too late
+# TODO Spotify does not work, class set too late
+assign [class="^Spotify"] → $ws-4 
+assign [app_id="Remmina$"] → $ws-5 
 
 for_window [app_id="pavucontrol"] floating enable
 for_window [title="^pulsemixer"] floating enable
 for_window [app_id="^htop"] floating enable
+for_window [app_id="^htop"] resize set 1800 1000
+
+for_window [app_id="^show-sway-keybindings"] floating enable
+for_window [app_id="^show-sway-keybindings"] resize set 1200 1000
 
 for_window [shell=".*"] title_format "%title :: %shell"
 

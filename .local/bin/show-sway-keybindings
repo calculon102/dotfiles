@@ -1,0 +1,2 @@
+#!/bin/sh
+awk '/bindsym/ {$1 = ""; printf "\033[0;32m" $2; $2 = ""; print "\033[0;33m" $0 }' .config/sway/config | sed 's/$mod/Super/g' | column -t -l 2 | less -r
